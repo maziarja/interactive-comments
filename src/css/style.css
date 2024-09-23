@@ -315,8 +315,7 @@ textarea:focus {
 .modal {
   position: fixed;
   top: 50%;
-  right: 50%;
-  transform: translate(50%, -50%);
+  transform: translateY(-50%);
   z-index: 99;
   max-width: 35.5rem;
 }
