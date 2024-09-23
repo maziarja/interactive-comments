@@ -7,7 +7,7 @@ import view from "./view.js";
 const data = model.getData();
 console.log(data);
 
-controlWriteComments = function () {
+controlWritingCm = function () {
   const text = view._writeComments();
   model.addComments(text);
   view._renderComment(data);
@@ -64,7 +64,7 @@ const init = function () {
   // render text area if reply on comments clicked
   view._addHandlerClickReplyOnComments(controlRenderReplyTextArea);
   // writing a new comment
-  view._addHandlerWriteComments(controlWriteComments);
+  view._addHandlerWriteComments(controlWritingCm);
   // render new reply if replyBtn clicked
   view._addHandlerReplyToComments(controlReplyToComment);
   // render All the replies
