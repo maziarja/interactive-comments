@@ -5,6 +5,7 @@ import * as model from "./model.js";
 import view from "./view.js";
 
 const data = model.getData();
+console.log(data);
 
 controlWriteComments = function () {
   const text = view._writeComments();
