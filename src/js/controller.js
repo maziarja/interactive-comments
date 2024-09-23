@@ -5,16 +5,15 @@ import * as model from "./model.js";
 import view from "./view.js";
 
 const data = model.getData();
-console.log(data);
 
-controlWritingCm = function () {
+const controlWritingCm = function () {
   const text = view._writeComments();
   model.addComments(text);
   view._renderComment(data);
   view._renderAllReplies(data);
 };
 
-controlRenderReplyTextArea = function (e) {
+const controlRenderReplyTextArea = function (e) {
   view._renderTextAreaOnComments(e, data);
 };
 
