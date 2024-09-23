@@ -1,0 +1,58 @@
+@media (min-width: 43.75em) {
+  .btn__reply,
+  .delete-edit-container {
+    top: 14%;
+  }
+  .btn__update {
+    grid-column: 2/3;
+  }
+  .comments,
+  .reply,
+  .current-user {
+    grid-template-rows: 1fr 1.5fr 0.5fr;
+    grid-template-columns: 4rem 1fr;
+  }
+  .rank__container {
+    flex-direction: column;
+    grid-row: 1/3;
+    padding: 1rem 1.2rem;
+  }
+  .top-part,
+  .comments__text {
+    grid-column: 2/3;
+  }
+  .comments__text {
+    grid-row: 2/4;
+    /* outline-offset: 1rem; */
+  }
+
+  .reply-wrapper {
+    max-width: 95%;
+    /* margin-left: auto; */
+    margin-left: 3.5rem;
+  }
+  .reply {
+    margin-left: 3rem;
+  }
+  .write__comment,
+  .write__reply {
+    grid-template-columns: 3rem 1.5fr 0.1fr;
+  }
+  .write__reply {
+    margin-left: 3rem;
+  }
+  .btn__send,
+  .btn-send__reply {
+    grid-column: 3/4;
+    grid-row: 1;
+    align-self: start;
+  }
+  textarea {
+    grid-column: 2/3;
+  }
+  .write__comment > img,
+  .write__reply > img {
+    grid-row: 1;
+    align-self: start;
+  }
+}

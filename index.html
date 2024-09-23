@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/css/style.css" />
+    <link rel="stylesheet" href="./src/css/queries.css" />
+    <script defer type="module" src="src/js/controller.js"></script>
+
+    <title>Frontend Mentor | Interactive comments section</title>
+  </head>
+  <body>
+    <!-- Pull dynamic content from the data.json file -->
+    <div class="overlay hidden"></div>
+    <div class="modal hidden">
+      <p class="modal-title">Delete comment</p>
+      <p class="modal-description">
+        Are you sure want to delete this comment? This will remove the comment
+        and can't be undone.
+      </p>
+      <div class="modal-btn__conatiner">
+        <button class="modal-btn-no">NO, CANCEL</button>
+        <button class="modal-btn-yes">YES, DELETE</button>
+      </div>
+    </div>
+    <div class="main">
+      <div class="cm__container">
+        <!-- <section class="comments">
+          <div class="top-part">
+            <img
+              src="./images/avatars/image-amyrobson.png"
+              alt="avatar"
+              class="avatar"
+            />
+            <p class="id">amyrobson</p>
+            <p class="time">1 month ago</p>
+          </div>
+          <p class="comments__text">
+            Impressive! Though it seems the drag feature could be improved. But
+            overall it looks incredible. You've nailed the design and the
+            responsiveness at various breakpoints works really well.
+          </p>
+          <div class="rank__container">
+            <button class="plus__btn">
+              <svg width="11" height="11" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M6.33 10.896c.137 0 .255-.05.354-.149.1-.1.149-.217.149-.354V7.004h3.315c.136 0 .254-.05.354-.149.099-.1.148-.217.148-.354V5.272a.483.483 0 0 0-.148-.354.483.483 0 0 0-.354-.149H6.833V1.4a.483.483 0 0 0-.149-.354.483.483 0 0 0-.354-.149H4.915a.483.483 0 0 0-.354.149c-.1.1-.149.217-.149.354v3.37H1.08a.483.483 0 0 0-.354.15c-.1.099-.149.217-.149.353v1.23c0 .136.05.254.149.353.1.1.217.149.354.149h3.333v3.39c0 .136.05.254.15.353.098.1.216.149.353.149H6.33Z"
+                  fill="#C5C6EF"
+                />
+              </svg>
+            </button>
+            <p class="rank__num">12</p>
+            <button class="minus__btn">
+              <svg width="11" height="3" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M9.256 2.66c.204 0 .38-.056.53-.167.148-.11.222-.243.222-.396V.722c0-.152-.074-.284-.223-.395a.859.859 0 0 0-.53-.167H.76a.859.859 0 0 0-.53.167C.083.437.009.57.009.722v1.375c0 .153.074.285.223.396a.859.859 0 0 0 .53.167h8.495Z"
+                  fill="#C5C6EF"
+                />
+              </svg>
+            </button>
+          </div>
+          <button class="btn__reply">Reply</button>
+        </section> -->
+        <!-- <div class="reply-wrapper">
+          <section class="reply">
+            <div class="top-part">
+              <img
+                src="./images/avatars/image-ramsesmiron.png"
+                alt="avatar"
+                class="avatar"
+              />
+              <p class="id">ramsesmiron</p>
+              <p class="time">1 week ago</p>
+            </div>
+            <p class="comments__text">
+              <span class="reply-to">@maxblagun</span>
+              If you're still new, I'd recommend focusing on the fundamentals of
+              HTML, CSS, and JS before considering React. It's very tempting to
+              jump ahead but lay a solid foundation first.
+            </p>
+            <div class="rank__container">
+              <button class="plus__btn">
+                <svg width="11" height="11" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M6.33 10.896c.137 0 .255-.05.354-.149.1-.1.149-.217.149-.354V7.004h3.315c.136 0 .254-.05.354-.149.099-.1.148-.217.148-.354V5.272a.483.483 0 0 0-.148-.354.483.483 0 0 0-.354-.149H6.833V1.4a.483.483 0 0 0-.149-.354.483.483 0 0 0-.354-.149H4.915a.483.483 0 0 0-.354.149c-.1.1-.149.217-.149.354v3.37H1.08a.483.483 0 0 0-.354.15c-.1.099-.149.217-.149.353v1.23c0 .136.05.254.149.353.1.1.217.149.354.149h3.333v3.39c0 .136.05.254.15.353.098.1.216.149.353.149H6.33Z"
+                    fill="#C5C6EF"
+                  />
+                </svg>
+              </button>
+              <p class="rank__num">4</p>
+              <button class="minus__btn">
+                <svg width="11" height="3" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M9.256 2.66c.204 0 .38-.056.53-.167.148-.11.222-.243.222-.396V.722c0-.152-.074-.284-.223-.395a.859.859 0 0 0-.53-.167H.76a.859.859 0 0 0-.53.167C.083.437.009.57.009.722v1.375c0 .153.074.285.223.396a.859.859 0 0 0 .53.167h8.495Z"
+                    fill="#C5C6EF"
+                  />
+                </svg>
+              </button>
+            </div>
+            <button class="btn__reply">Reply</button>
+          </section>
+          <section class="current-user">
+            <div class="top-part">
+              <img
+                src="./images/avatars/image-juliusomo.webp"
+                alt="avatar"
+                class="avatar"
+              />
+              <p class="id">juliusomo</p>
+              <p class="you">you</p>
+              <p class="time">2 days ago</p>
+            </div>
+            <p class="comments__text">
+              I couldn't agree more with this. Everything moves so fast and it
+              always seems like everyone knows the newest library/framework. But
+              the fundamentals are what stay constant.
+            </p>
+            <div class="rank__container">
+              <button class="plus__btn">
+                <svg width="11" height="11" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M6.33 10.896c.137 0 .255-.05.354-.149.1-.1.149-.217.149-.354V7.004h3.315c.136 0 .254-.05.354-.149.099-.1.148-.217.148-.354V5.272a.483.483 0 0 0-.148-.354.483.483 0 0 0-.354-.149H6.833V1.4a.483.483 0 0 0-.149-.354.483.483 0 0 0-.354-.149H4.915a.483.483 0 0 0-.354.149c-.1.1-.149.217-.149.354v3.37H1.08a.483.483 0 0 0-.354.15c-.1.099-.149.217-.149.353v1.23c0 .136.05.254.149.353.1.1.217.149.354.149h3.333v3.39c0 .136.05.254.15.353.098.1.216.149.353.149H6.33Z"
+                    fill="#C5C6EF"
+                  />
+                </svg>
+              </button>
+              <p class="rank__num">2</p>
+              <button class="minus__btn">
+                <svg width="11" height="3" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M9.256 2.66c.204 0 .38-.056.53-.167.148-.11.222-.243.222-.396V.722c0-.152-.074-.284-.223-.395a.859.859 0 0 0-.53-.167H.76a.859.859 0 0 0-.53.167C.083.437.009.57.009.722v1.375c0 .153.074.285.223.396a.859.859 0 0 0 .53.167h8.495Z"
+                    fill="#C5C6EF"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="delete-edit-container">
+              <button class="delete">Delete</button>
+              <button class="edit">Edit</button>
+            </div>
+            <button class="btn__update hidden">UPDATE</button>
+          </section>
+        </div> -->
+      </div>
+      <section class="write__comment">
+        <textarea id="write" placeholder="Add a comment..."></textarea>
+        <img
+          src="./images/avatars/image-juliusomo.webp"
+          alt="avatar"
+          class="avatar"
+        />
+        <button class="btn__send">SEND</button>
+      </section>
+    </div>
+  </body>
+</html>
